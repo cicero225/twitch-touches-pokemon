@@ -1,24 +1,23 @@
 // ==UserScript==
-// @name           Twitch touches pokemon
-// @namespace      https://github.com/lostcoaster/twitch-touches-pokemon
-// @author         lostcoaster
-// @author         MattiasBuelens
-// @author         WhatAboutGaming
-// @version        1.10
-// @description    A tool adding a touch overlay onto the stream of twitchplayspokemon.
-// @description    Fixed to work with Pokemon Randomized Alpha Sapphire, Send on Clicking fixed, now works on Theater Mode
+// @name           Twitch touches XCOM
+// @namespace      N/A (for now) ORIGINAL TPP Version: https://github.com/lostcoaster/twitch-touches-pokemon
+// @author         Twitch touches XCOM ORIGINAL TPP Version: lostcoaster, MattiasBuelens, WhatAboutGaming 
+// @version        0.5
+// @description    A tool adding a touch overlay onto the stream of twitchplaysxcom, based on a similar script for twitchplayspokemon
 // @grant          none
 // @run-at         document-end
 
-// this include string credits Twitch Plays Pokemon Chat Filter
-// @include        /^https?://(www|beta)\.twitch\.tv\/twitchplayspokemon.*$/
-// @include        /^https?://(www\.)?tinytwit\.ch\/twitchplayspokemon.*$/
-// @include        /^https?://(www\.)?twitchplayspokemon\.net\/?$/
+// this include string credits Twitch Plays Pokemon version
+// @include        /^https?://(www|beta)\.twitch\.tv\/twitchplaysxcom.*$/
+// @include        /^https?://(www\.)?github\.com\/lostcoaster\/twitch-touches-pokemon.*$/
 
-// @updateURL      https://raw.githubusercontent.com/lostcoaster/twitch-touches-pokemon/master/touch.user.js
+// @updateURL      N/A (for now) https://raw.githubusercontent.com/lostcoaster/twitch-touches-pokemon/master/touch.user.js
 // ==/UserScript==
 
+//TO DO: Obviously edit the below
 // for bookmarklet users : javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://raw.githubusercontent.com/lostcoaster/twitch-touches-pokemon/master/touch.user.js';})();
+
+//NOTE: 
 
 /* jshint
  lastsemic:true,
@@ -123,13 +122,13 @@
 
     var touch_pad = {
         parameters: {
-            position_x: 0.517,
-            position_y: 0.697,
-            original_height: 820,
+            position_x: 0.207,
+            position_y: 0.000,
+            original_height: 1080,
             bar_height: 30,
-            ratio: 9 / 16,
-            screen_height: 240,
-            screen_width: 320
+            ratio: 54/121,
+            screen_height: 1080,
+            screen_width: 1920
         },
 
         settings: {
@@ -144,8 +143,8 @@
 
         // reflect mouse event to coordinate output.
         coords: function (event) {
-            var x = Math.floor((event.pageX - $(event.target).offset().left) / touch_pad.scale);
-            var y = Math.floor((event.pageY - $(event.target).offset().top) / touch_pad.scale);
+            var x = Math.floor((event.pageX - $(event.target).offset().left) / touch_pad.scale /50)*50; //rounded off to nearest 50
+            var y = Math.floor((event.pageY - $(event.target).offset().top) / touch_pad.scale /50)*50;
             x = Math.min(Math.max(x, 1), touch_pad.parameters.screen_width);
             y = Math.min(Math.max(y, 1), touch_pad.parameters.screen_height);
             return x + ',' + y;
@@ -167,14 +166,14 @@
                 var base_offset = base.offset();
                 var real_height, real_width, left_margin, top_margin;
                 if (height / base.width() > touch_pad.parameters.ratio) {
-                    // this is the behavior of BetterTTV, filling horizontally and leave margins on top and bottom
+                    // this is the behavior of BetterTTV, filling horizontally and leave margins on top and bottom //This is the behavior of twitch now
                     real_width = base.width();
                     real_height = real_width * touch_pad.parameters.ratio;
                     touch_pad.scale = real_height / touch_pad.parameters.original_height;
                     left_margin = 0;
                     top_margin = (height - real_height) / 2;
                 } else {
-                    // this is the normal behavior of twitch, filling vertically and leave margins on left and right.
+                    // this is the normal behavior of twitch, filling vertically and leave margins on left and right. //this is no longer true
                     real_height = height;
                     touch_pad.scale = real_height / touch_pad.parameters.original_height;
                     real_width = real_height / touch_pad.parameters.ratio;
@@ -238,7 +237,7 @@
         init: function () {
             if ($('.touch_overlay').length === 0) {
 
-                if(location.href == "http://www.twitch.tv/twitchplayspokemon/chat"){
+                if(location.href == "http://www.twitch.tv/twitchplaysxcom/chat"){
                     // the window
                     var callback = function(e){
                         if(e.data && e.data.type === 'chat_coordinate')
@@ -271,7 +270,7 @@
                                 chat_frame[0].contentWindow
                                     .postMessage({type:'chat_coordinate', content:output_text}, 'http://www.twitch.tv');
                             } else {
-                                myWindow.prompt('Twitch touches pokemon cannot locate the chat box on this page, possibly because it is not on the offical stream page, but you can copy the following value to send it yourself.',
+                                myWindow.prompt('Twitch touches xcom cannot locate the chat box on this page, possibly because it is not on the offical stream page, but you can copy the following value to send it yourself.',
                                     output_text);
                             }
                         }
