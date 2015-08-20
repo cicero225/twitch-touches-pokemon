@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Twitch touches XCOM
-// @namespace      N/A (for now) ORIGINAL TPP Version: https://github.com/lostcoaster/twitch-touches-pokemon
-// @author         Twitch touches XCOM ORIGINAL TPP Version: lostcoaster, MattiasBuelens, WhatAboutGaming 
+// @namespace      https://github.com/cicero225/twitch-touches-xcom
+// @author         cicero225 ORIGINAL TPP Version: lostcoaster, MattiasBuelens, WhatAboutGaming 
 // @version        0.5
 // @description    A tool adding a touch overlay onto the stream of twitchplaysxcom, based on a similar script for twitchplayspokemon
 // @grant          none
@@ -11,10 +11,10 @@
 // @include        /^https?://(www|beta)\.twitch\.tv\/twitchplaysxcom.*$/
 // @include        /^https?://(www\.)?github\.com\/lostcoaster\/twitch-touches-pokemon.*$/
 
-// @updateURL      N/A (for now) PREVIOUS: https://raw.githubusercontent.com/lostcoaster/twitch-touches-pokemon/master/touch.user.js
+// @updateURL      https://github.com/cicero225/twitch-touches-xcom/raw/master/touch.user.js
 // ==/UserScript==
 
-// for bookmarklet users : javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://raw.githubusercontent.com/cicero225/twitch-touches-xcom/master/touch.user.js';})();
+// for bookmarklet users : javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://github.com/cicero225/twitch-touches-xcom/raw/master/touch.user.js';})();
 
 //NOTE: 
 
