@@ -11,11 +11,11 @@
 // @include        /^https?://(www|beta)\.twitch\.tv\/twitchplaysxcom.*$/
 // @include        /^https?://(www\.)?github\.com\/lostcoaster\/twitch-touches-pokemon.*$/
 
-// @updateURL      N/A (for now) https://raw.githubusercontent.com/lostcoaster/twitch-touches-pokemon/master/touch.user.js
+// @updateURL      N/A (for now) PREVIOUS: https://raw.githubusercontent.com/lostcoaster/twitch-touches-pokemon/master/touch.user.js
 // ==/UserScript==
 
 //TO DO: Obviously edit the below
-// for bookmarklet users : javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://raw.githubusercontent.com/lostcoaster/twitch-touches-pokemon/master/touch.user.js';})();
+// for bookmarklet users : javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://raw.githubusercontent.com/cicero225/twitch-touches-xcom/master/touch.user.js';})();
 
 //NOTE: 
 
