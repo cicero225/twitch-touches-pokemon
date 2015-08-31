@@ -142,8 +142,8 @@
 
         // reflect mouse event to coordinate output.
         coords: function (event) {
-            var x = Math.floor((event.pageX - $(event.target).offset().left) / touch_pad.scale /50)*50; //rounded off to nearest 50
-            var y = Math.floor((event.pageY - $(event.target).offset().top) / touch_pad.scale /50)*50;
+            var x = Math.round((event.pageX - $(event.target).offset().left) / touch_pad.scale /25)*25; //rounded off to nearest 50
+            var y = Math.round((event.pageY - $(event.target).offset().top) / touch_pad.scale /25)*25;
             x = Math.min(Math.max(x, 1), touch_pad.parameters.screen_width);
             y = Math.min(Math.max(y, 1), touch_pad.parameters.screen_height);
             return x + ',' + y;
